@@ -13,14 +13,10 @@ onload = function() {
     style.fontSize = i + "px"
     style.position = "absolute"
 
-    while (1) {
-      left = innerWidth - el.offsetWidth
-      top  = innerHeight - el.offsetHeight
-
-      if (top > 0 && left > 0) break
-
-      style.fontSize = (i -= i * 0.05) + "px"
-    }
+    style.fontSize = Math.floor(Math.min(i/el.offsetWidth*innerWidth,i/el.offsetHeight*innerHeight))+"px";
+    
+    left = innerWidth - el.offsetWidth
+    top  = innerHeight - el.offsetHeight
 
     style.display = "block"
     style.top     = top / 2 + "px"
